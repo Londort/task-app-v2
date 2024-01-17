@@ -1,0 +1,16 @@
+@import url('../var.css');
+
+.btn {
+  border-radius: 5px;
+  border: none;
+  padding: 0.3rem 0.9rem;
+  margin: 0 auto;
+  cursor: pointer;
+  .btn:hover {
+    background-color: #5a1363;
+    color: #f5f5f5;
+  }
+}
+.red {
+  background-color: red;
+}
