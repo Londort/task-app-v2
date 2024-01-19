@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { FaBars } from 'react-icons/fa';
+import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import styles from './TaskForm.module.css';
 import Btn from '../UI/Btn';
@@ -69,9 +70,12 @@ const TaskForm = (props) => {
     <section
       className={`${styles.container} ${isActive ? `${styles.active}` : ' '}`}
     >
-      <button className={styles.openFormBtn} onClick={handleFormOpen}>
-        Add Task
-      </button>
+      <FaBars
+        className={styles.openFormBtn}
+        onClick={handleFormOpen}
+        title="Add New Task"
+      />
+
       <div className={styles.header}>
         <p>Add New Task</p>
       </div>

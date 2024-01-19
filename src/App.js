@@ -19,7 +19,7 @@ const App = () => {
   }, []);
 
   const newTask = (task) => {
-    const addTask = [...tasks, task];
+    const addTask = [task, ...tasks];
     setTasks(addTask);
     LocalStorage.updateTasks(addTask);
   };
