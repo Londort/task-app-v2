@@ -4,7 +4,7 @@ import TaskItem from './TaskItem.js';
 const TaskList = (props) => {
   return (
     <section className={styles.container}>
-      {props.tasks.length === 0 && <p>No tasks to show</p>}
+      {props.tasks.length === 0 && <p>No tasks yet</p>}
       {props.tasks.map((task) => (
         <TaskItem
           onTaskClick={props.onTaskClick}

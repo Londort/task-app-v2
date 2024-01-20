@@ -118,111 +118,11 @@ const TaskForm = (props) => {
             ></input>
           </div>
         </form>
-
-        {/* <form onSubmit={handleSubmit}>
-          <label>
-            Title
-            <input
-              type="text"
-              name="title"
-              placeholder="Tite"
-              value={task.title}
-              onChange={handleChange}
-            ></input>
-          </label>
-          <label>
-            Description
-            <textarea
-              name="description"
-              placeholder="Description"
-              value={task.description}
-              onChange={handleChange}
-            ></textarea>
-          </label>
-          <label>
-            Due Date
-            <input
-              type="date"
-              name="dueDate"
-              value={task.dueDate}
-              onChange={handleChange}
-            ></input>
-          </label>
-          <label>
-            Type:
-            <select name="type" value={task.type} onChange={handleChange}>
-              <option name="reminder">reminder</option>
-              <option name="meeting">meeting</option>
-              <option name="call">call</option>
-              <option name="message">message</option>
-            </select>
-          </label>
-        </form> */}
-
-        {/* <form onSubmit={handleSubmit}>
-          <table>
-            <tbody>
-              <tr>
-                <td>
-                  <label>Title</label>
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    name="title"
-                    placeholder="Tite"
-                    value={task.title}
-                    onChange={handleChange}
-                  ></input>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label>Description</label>
-                </td>
-                <td>
-                  <textarea
-                    name="description"
-                    placeholder="Description"
-                    value={task.description}
-                    onChange={handleChange}
-                  ></textarea>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label>Due Date</label>
-                </td>
-                <td>
-                  <input
-                    type="date"
-                    name="dueDate"
-                    value={task.dueDate}
-                    onChange={handleChange}
-                  ></input>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label>Type:</label>
-                </td>
-                <td>
-                  <select name="type" value={task.type} onChange={handleChange}>
-                    <option name="reminder">reminder</option>
-                    <option name="meeting">meeting</option>
-                    <option name="call">call</option>
-                    <option name="message">message</option>
-                  </select>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </form> */}
       </div>
       <div className={styles.footer}>
-        <Btn type="submit" className="btn" onClick={handleSubmit}>
+        <button type="submit" className={styles.btn} onClick={handleSubmit}>
           Add Task
-        </Btn>
+        </button>
       </div>
     </section>
   );

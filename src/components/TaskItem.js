@@ -5,14 +5,7 @@ const TaskItem = ({ task, deleteTask, onTaskClick }) => {
     <article className={styles.container} onClick={() => onTaskClick(task)}>
       <div className={styles.header}>
         <p>{task.title}</p>
-        <button
-          className={styles.deleteBtn}
-          onClick={() => deleteTask(task.id)}
-        >
-          Delete
-        </button>
       </div>
-      <p className={styles.description}>{task.description}</p>
       <div className={styles.footer}>
         {task.type && (
           <p>

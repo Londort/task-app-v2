@@ -62,7 +62,7 @@ const App = () => {
         tasks={tasks}
         deleteTask={deleteTask}
         onTaskClick={handleTaskClick}
-        onTaskClose={handleTaskClose}
+        // onTaskClose={handleTaskClose}
       />
       <TaskForm
         addTask={newTask}
@@ -75,6 +75,7 @@ const App = () => {
           task={selectedTask}
           isActive={isDetailsActive}
           onTaskClose={handleTaskClose}
+          deleteTask={deleteTask}
         />
       )}
     </div>
