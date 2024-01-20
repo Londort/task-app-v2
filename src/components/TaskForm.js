@@ -80,8 +80,9 @@ const TaskForm = (props) => {
         <p>Add New Task</p>
       </div>
       <div className={styles.main}>
-        <form onSubmit={handleSubmit}>
+        <form className={styles.form} onSubmit={handleSubmit}>
           <input
+            className={styles.input}
             type="text"
             name="title"
             placeholder="Caption"
@@ -89,6 +90,7 @@ const TaskForm = (props) => {
             onChange={handleChange}
           ></input>
           <textarea
+            className={styles.textarea}
             name="description"
             placeholder="Description"
             value={task.description}

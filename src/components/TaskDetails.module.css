@@ -13,6 +13,7 @@
   text-align: left;
   transform: translateX(-500px);
   transition: transform 0.3s ease-in-out;
+  z-index: 2;
 }
 .container.active {
   transform: translateX(0px);
@@ -119,5 +120,11 @@
       height: 4rem;
       cursor: pointer;
     }
+  }
+}
+@media (max-width: 500px) {
+  .container {
+    width: 100%;
+    transform: translateX(-100%);
   }
 }
