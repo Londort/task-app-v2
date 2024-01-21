@@ -29,28 +29,6 @@ const TaskForm = (props) => {
     }
   };
 
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-
-  //   console.log(task.details);
-  //   console.log(name);
-
-  //   if (name.startsWith('details.')) {
-  //     // Если изменяются значения в подробностях
-  //     const detailKey = name.split('.')[1];
-  //     setTask({
-  //       ...task,
-  //       details: {
-  //         ...task.details,
-  //         [detailKey]: value,
-  //       },
-  //     });
-  //   } else {
-  //     // Иначе, обновление обычных свойств
-  //     setTask({ ...task, [name]: value });
-  //   }
-  // };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const taskID = uuidv4();

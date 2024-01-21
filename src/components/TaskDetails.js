@@ -1,18 +1,32 @@
 import { useState, useEffect } from 'react';
 
 import { FaTimes } from 'react-icons/fa';
-import { FaEdit } from 'react-icons/fa';
+import { FaCheck } from 'react-icons/fa';
 import { FaTrashAlt } from 'react-icons/fa';
 import styles from './TaskDetails.module.css';
 
 const TaskDetails = (props) => {
-  let { ...task } = props.task;
+  const { task, isActive, onTaskClose, deleteTask, onEditTask } = props;
+  const [editTask, setEditTask] = useState(props.task);
 
-  // Start new code
+  useEffect(() => {
+    setEditTask(task);
+  }, [task]);
 
-  // End new code
-
-  const { deleteTask, onTaskClose, isActive } = props;
+  const handleChange = (e) => {
+    if (e.target.name.startsWith('details.')) {
+      const detailKey = e.target.name.split('.')[1];
+      setEditTask({
+        ...editTask,
+        details: {
+          ...editTask.details,
+          [detailKey]: e.target.value,
+        },
+      });
+    } else {
+      setEditTask({ ...editTask, [e.target.name]: e.target.value });
+    }
+  };
 
   return (
     <section
@@ -24,40 +38,52 @@ const TaskDetails = (props) => {
           <FaTimes className={styles.icon} onClick={onTaskClose} />
         </div>
       </div>
+
       <form className={styles.main}>
         <input
           name="title"
           type="text"
-          value={task.title}
-          // onChange={handleChange}
+          value={editTask.title}
+          onChange={handleChange}
         ></input>
-        <textarea name="description" value={task.description}></textarea>
+        <textarea
+          name="description"
+          value={editTask.description}
+          onChange={handleChange}
+        ></textarea>
 
         <div className={styles.date_type}>
-          <select name="type" value={task.type}>
+          <select name="type" value={editTask.type} onChange={handleChange}>
             <option name="reminder">reminder</option>
             <option name="meeting">meeting</option>
             <option name="call">call</option>
             <option name="email">email</option>
           </select>
-          <input name="date" type="date" value={task.dueDate}></input>
+
+          <input
+            name="dueDate"
+            type="date"
+            value={editTask.dueDate}
+            onChange={handleChange}
+          ></input>
         </div>
 
-        {task.details && (
+        {editTask.details && (
           <div className={styles.details}>
-            {Object.keys(task.details).map((key) => (
+            {Object.keys(editTask.details).map((key) => (
               <div className={styles.extra} key={key}>
                 <p>{key}</p>
                 <input
-                  type={task.type}
-                  value={task.details[key]}
-                  readOnly
+                  type={editTask.type}
+                  value={editTask.details[key]}
+                  onChange={handleChange}
                 ></input>
               </div>
             ))}
           </div>
         )}
       </form>
+
       <div className={styles.footer}>
         <div className={styles.iconbox}>
           <FaTrashAlt
@@ -70,7 +96,14 @@ const TaskDetails = (props) => {
           />
         </div>
         <div className={styles.iconbox}>
-          <FaEdit className={styles.icon} title="Edit Task" />
+          <FaCheck
+            className={styles.icon}
+            title="Edit Task"
+            onClick={() => {
+              onEditTask(editTask);
+              onTaskClose();
+            }}
+          />
         </div>
       </div>
     </section>

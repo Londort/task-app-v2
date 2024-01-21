@@ -24,6 +24,17 @@ const App = () => {
     LocalStorage.updateTasks(addTask);
   };
 
+  const editTask = (task) => {
+    const updateTasks = tasks.map((item) => {
+      if (item.id === task.id) {
+        return task;
+      }
+      return item;
+    });
+    setTasks(updateTasks);
+    LocalStorage.updateTasks(updateTasks);
+  };
+
   const deleteTask = (id) => {
     const updateTasks = tasks.filter((task) => task.id !== id);
     setTasks(updateTasks);
@@ -61,7 +72,6 @@ const App = () => {
         tasks={tasks}
         deleteTask={deleteTask}
         onTaskClick={handleTaskClick}
-        // onTaskClose={handleTaskClose}
       />
       <TaskForm
         addTask={newTask}
@@ -75,6 +85,7 @@ const App = () => {
           isActive={isDetailsActive}
           onTaskClose={handleTaskClose}
           deleteTask={deleteTask}
+          onEditTask={editTask}
         />
       )}
     </div>
