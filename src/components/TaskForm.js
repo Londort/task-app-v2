@@ -15,8 +15,6 @@ const TaskForm = (props) => {
   });
 
   const handleChange = (e) => {
-    console.log(task.details);
-    console.log(e.target.name);
     if (e.target.name.startsWith('details.')) {
       const detailKey = e.target.name.split('.')[1];
       setTask({
