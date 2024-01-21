@@ -7,16 +7,12 @@ const TaskItem = ({ task, deleteTask, onTaskClick }) => {
         <p>{task.title}</p>
       </div>
       <div className={styles.footer}>
-        {task.type && (
-          <p>
-            <span>type:</span> {task.type}
-          </p>
-        )}
-        {task.dueDate && (
-          <p>
-            <span>date:</span> {task.dueDate}
-          </p>
-        )}
+        <p>
+          <span>type:</span> {task.type}
+        </p>
+        <p>
+          <span>date:</span> {task.dueDate}
+        </p>
       </div>
     </article>
   );

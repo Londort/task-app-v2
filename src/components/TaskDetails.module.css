@@ -1,5 +1,14 @@
 @import url('../var.css');
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .container {
   overflow: auto;
   width: 500px;
@@ -14,6 +23,7 @@
   text-align: left;
   transform: translateX(-500px);
   transition: transform 0.3s ease-in-out;
+
   z-index: 2;
 }
 .container.active {
@@ -34,6 +44,7 @@
   p {
     flex: 1;
     line-height: 1.5rem;
+    text-transform: uppercase;
   }
   .iconbox {
     position: absolute;
@@ -58,6 +69,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+
   input,
   textarea,
   select {
@@ -92,6 +104,22 @@
     }
   }
 }
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.extra {
+  animation: fadeIn 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  padding-left: 1rem;
+  p {
+    text-transform: capitalize;
+    color: var(--colour1);
+  }
+}
+
 .footer {
   padding: 1.5rem;
   width: 100%;
@@ -101,6 +129,7 @@
   align-items: center;
   justify-content: center;
   color: var(--colour1);
+
   .iconbox {
     display: flex;
     flex-direction: row;

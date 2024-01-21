@@ -52,7 +52,6 @@ const App = () => {
   };
 
   if (isTaskFormActive && isDetailsActive) {
-    // isDetailsActive = false;
     handleTaskClose();
   }
 
