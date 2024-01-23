@@ -1,0 +1,11 @@
+@import url('../var.css');
+
+.container {
+  border-radius: 50%;
+  padding: 0.6rem;
+  background-color: var(--colour-primary);
+
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}

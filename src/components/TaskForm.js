@@ -1,7 +1,9 @@
-import { FaBars } from 'react-icons/fa';
 import { useState } from 'react';
+import { FaBars } from 'react-icons/fa';
+import { FaCheck } from 'react-icons/fa';
 import { v4 as uuidv4 } from 'uuid';
 import styles from './TaskForm.module.css';
+import RoundBtn from '../UI/RoundBtn';
 
 const TaskForm = (props) => {
   const { addTask, handleFormOpen, isActive } = props;
@@ -149,9 +151,9 @@ const TaskForm = (props) => {
         </form>
       </div>
       <div className={styles.footer}>
-        <button type="submit" className={styles.btn} onClick={handleSubmit}>
-          Add Task
-        </button>
+        <RoundBtn onClick={handleSubmit} title="Save">
+          <FaCheck className={styles.addicon} />
+        </RoundBtn>
       </div>
     </section>
   );

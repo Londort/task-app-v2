@@ -4,6 +4,7 @@ import { FaTimes } from 'react-icons/fa';
 import { FaCheck } from 'react-icons/fa';
 import { FaTrashAlt } from 'react-icons/fa';
 import styles from './TaskDetails.module.css';
+import RoundBtn from '../UI/RoundBtn';
 
 const TaskDetails = (props) => {
   const { task, isActive, onTaskClose, deleteTask, onEditTask } = props;
@@ -85,10 +86,28 @@ const TaskDetails = (props) => {
       </form>
 
       <div className={styles.footer}>
-        <div className={styles.iconbox}>
+        <RoundBtn
+          onClick={() => {
+            deleteTask(task.id);
+            onTaskClose();
+          }}
+        >
+          <FaTrashAlt className={styles.icondel} title="Delete" />
+        </RoundBtn>
+
+        <RoundBtn
+          onClick={() => {
+            onEditTask(editTask);
+            onTaskClose();
+          }}
+        >
+          <FaCheck className={styles.iconedit} title="Edit" />
+        </RoundBtn>
+
+        {/* <div className={styles.iconbox}>
           <FaTrashAlt
-            className={styles.icon}
-            title="Delete Task"
+            className={styles.icondel}
+            title="Delete"
             onClick={() => {
               deleteTask(task.id);
               onTaskClose();
@@ -97,14 +116,14 @@ const TaskDetails = (props) => {
         </div>
         <div className={styles.iconbox}>
           <FaCheck
-            className={styles.icon}
-            title="Edit Task"
+            className={styles.iconedit}
+            title="Edit"
             onClick={() => {
               onEditTask(editTask);
               onTaskClose();
             }}
           />
-        </div>
+        </div> */}
       </div>
     </section>
   );

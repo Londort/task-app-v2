@@ -1,7 +1,11 @@
 :root {
-  --colour1: #fee3ff;
-  --colour2: #fcc7eb;
-  --colour3: #f08bcb;
-  --colour4: #a478cf;
-  --colour5: #f4bbfe;
+  --colour-primary: #f3e8ee;
+  --colour-secondary: #2e2c2f;
+  --colour-tertiary: #7b8cde;
+  --colour-extra1: #93c572;
+  --colour-extra2: #f06543;
+
+  --text-dark: #2e2c2f;
+  --text-light: #f3e8ee;
+  --text-unfocus: #514d52;
 }
