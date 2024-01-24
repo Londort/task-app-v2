@@ -119,6 +119,35 @@
       color: var(--colour-primary);
       left: -0.5rem;
     }
+    .action {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem;
+      background-color: var(--colour-primary);
+      font-family: inherit;
+      box-sizing: border-box;
+      border: 1px solid var(--colour-primary);
+      border-radius: 5px;
+      a {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: nowrap;
+      }
+      input {
+        padding: 0;
+        background-color: inherit;
+      }
+      .icon {
+        width: 1.5rem;
+        height: 1.5rem;
+        color: var(--colour-extra1);
+      }
+    }
   }
 }
 
@@ -147,5 +176,13 @@
   .container {
     width: 100%;
     transform: translateX(-100%);
+    .extra {
+      padding-left: 0px;
+      .action {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+      }
+    }
   }
 }

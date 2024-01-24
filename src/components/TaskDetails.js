@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import { FaTimes } from 'react-icons/fa';
+import { FaTimes, FaPhoneSquare, FaEnvelopeSquare } from 'react-icons/fa';
 import { FaCheck } from 'react-icons/fa';
 import { FaTrashAlt } from 'react-icons/fa';
 import styles from './TaskDetails.module.css';
@@ -13,12 +13,6 @@ const TaskDetails = (props) => {
   useEffect(() => {
     setEditTask(task);
   }, [task]);
-
-  // if (!isDetailsActive) {
-  //   document.body.style.overflow = 'auto';
-  // } else {
-  //   document.body.style.overflow = 'hidden';
-  // }
 
   const handleChange = (e) => {
     if (e.target.name.startsWith('details.')) {
@@ -106,24 +100,35 @@ const TaskDetails = (props) => {
               onChange={handleChange}
             ></input>
             <label htmlFor="details.phone">Phone:</label>
-            <input
-              type="tel"
-              name="details.phone"
-              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-              value={editTask.details.phone}
-              onChange={handleChange}
-            ></input>
+
+            <div className={styles.action}>
+              <input
+                type="tel"
+                name="details.phone"
+                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                value={editTask.details.phone}
+                onChange={handleChange}
+              ></input>
+              <a href={`tel:${editTask.details.phone}`}>
+                <FaPhoneSquare className={styles.icon} />
+              </a>
+            </div>
           </div>
         )}
         {editTask.type === 'email' && (
           <div className={styles.extra}>
             <label htmlFor="details.email">Email:</label>
-            <input
-              type="email"
-              name="details.email"
-              value={editTask.details.email}
-              onChange={handleChange}
-            ></input>
+            <div className={styles.action}>
+              <input
+                type="email"
+                name="details.email"
+                value={editTask.details.email}
+                onChange={handleChange}
+              ></input>
+              <a href={`mailto:${editTask.details.email}`}>
+                <FaEnvelopeSquare className={styles.icon} />
+              </a>
+            </div>
           </div>
         )}
 
