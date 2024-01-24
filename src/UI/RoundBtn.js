@@ -4,7 +4,6 @@ const RoundBtn = (props) => {
   const { children, onClick, title } = props;
   let { className } = props;
 
-  console.log(title);
   if (className) {
     className = className
       .split(' ')

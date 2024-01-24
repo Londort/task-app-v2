@@ -7,12 +7,18 @@ import styles from './TaskDetails.module.css';
 import RoundBtn from '../UI/RoundBtn';
 
 const TaskDetails = (props) => {
-  const { task, isActive, onTaskClose, deleteTask, onEditTask } = props;
-  const [editTask, setEditTask] = useState(props.task);
+  const { task, isDetailsActive, onTaskClose, deleteTask, onEditTask } = props;
+  const [editTask, setEditTask] = useState(task);
 
   useEffect(() => {
     setEditTask(task);
   }, [task]);
+
+  // if (!isDetailsActive) {
+  //   document.body.style.overflow = 'auto';
+  // } else {
+  //   document.body.style.overflow = 'hidden';
+  // }
 
   const handleChange = (e) => {
     if (e.target.name.startsWith('details.')) {
@@ -31,13 +37,15 @@ const TaskDetails = (props) => {
 
   return (
     <section
-      className={`${styles.container} ${isActive ? `${styles.active}` : ''}`}
+      className={`${styles.container} ${
+        isDetailsActive ? `${styles.active}` : ''
+      }`}
     >
       <div className={styles.header}>
         <p>{task.type || task.title}</p>
-        <div className={styles.iconbox}>
-          <FaTimes className={styles.icon} onClick={onTaskClose} />
-        </div>
+        <RoundBtn className={styles.closeform} onClick={onTaskClose}>
+          <FaTimes className={styles.icon} />
+        </RoundBtn>
       </div>
 
       <form className={styles.main}>
@@ -68,21 +76,58 @@ const TaskDetails = (props) => {
             onChange={handleChange}
           ></input>
         </div>
+        {/* extra Detials part starts here */}
 
-        {editTask.details && (
-          <div className={styles.details}>
-            {Object.keys(editTask.details).map((key) => (
-              <div className={styles.extra} key={key}>
-                <p>{key}</p>
-                <input
-                  type={editTask.type}
-                  value={editTask.details[key]}
-                  onChange={handleChange}
-                ></input>
-              </div>
-            ))}
+        {editTask.type === 'meeting' && (
+          <div className={styles.extra}>
+            <label htmlFor="details.location">Location:</label>
+            <input
+              type="text"
+              name="details.location"
+              value={editTask.details.location || ''}
+              onChange={handleChange}
+            ></input>
+            <label htmlFor="details.attendees">Attendees:</label>
+            <input
+              type="text"
+              name="details.attendees"
+              value={editTask.details.attendees}
+              onChange={handleChange}
+            ></input>
           </div>
         )}
+        {editTask.type === 'call' && (
+          <div className={styles.extra}>
+            <label htmlFor="details.person">Person:</label>
+            <input
+              type="text"
+              name="details.person"
+              value={editTask.details.person}
+              onChange={handleChange}
+            ></input>
+            <label htmlFor="details.phone">Phone:</label>
+            <input
+              type="tel"
+              name="details.phone"
+              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+              value={editTask.details.phone}
+              onChange={handleChange}
+            ></input>
+          </div>
+        )}
+        {editTask.type === 'email' && (
+          <div className={styles.extra}>
+            <label htmlFor="details.email">Email:</label>
+            <input
+              type="email"
+              name="details.email"
+              value={editTask.details.email}
+              onChange={handleChange}
+            ></input>
+          </div>
+        )}
+
+        {/* extra Detials part ends here */}
       </form>
 
       <div className={styles.footer}>
@@ -103,27 +148,6 @@ const TaskDetails = (props) => {
         >
           <FaCheck className={styles.iconedit} title="Edit" />
         </RoundBtn>
-
-        {/* <div className={styles.iconbox}>
-          <FaTrashAlt
-            className={styles.icondel}
-            title="Delete"
-            onClick={() => {
-              deleteTask(task.id);
-              onTaskClose();
-            }}
-          />
-        </div>
-        <div className={styles.iconbox}>
-          <FaCheck
-            className={styles.iconedit}
-            title="Edit"
-            onClick={() => {
-              onEditTask(editTask);
-              onTaskClose();
-            }}
-          />
-        </div> */}
       </div>
     </section>
   );

@@ -11,12 +11,28 @@ const App = () => {
   const [isDetailsActive, setIsDetailsActive] = useState(false);
   const [isTaskFormActive, setIsTaskFormActive] = useState(false);
 
+  // console.group('App.js');
+  // console.log('active form now is ' + isTaskFormActive);
+  // console.groupEnd();
+
   useEffect(() => {
     const taskList = LocalStorage.getTasks();
     if (taskList) {
       setTasks(taskList);
     }
   }, []);
+
+  useEffect(() => {
+    if (isDetailsActive || isTaskFormActive) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isDetailsActive, isTaskFormActive]);
 
   const newTask = (task) => {
     const addTask = [task, ...tasks];
@@ -55,11 +71,6 @@ const App = () => {
 
   const handleFormOpen = () => {
     setIsTaskFormActive(!isTaskFormActive);
-    if (!isTaskFormActive) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
   };
 
   if (isTaskFormActive && isDetailsActive) {
@@ -68,21 +79,17 @@ const App = () => {
 
   return (
     <div className="App">
-      <TaskList
-        tasks={tasks}
-        deleteTask={deleteTask}
-        onTaskClick={handleTaskClick}
-      />
+      <TaskList tasks={tasks} onTaskClick={handleTaskClick} />
       <TaskForm
         addTask={newTask}
         handleFormOpen={handleFormOpen}
-        isActive={isTaskFormActive}
+        isFormActive={isTaskFormActive}
       />
 
       {selectedTask && (
         <TaskDetails
           task={selectedTask}
-          isActive={isDetailsActive}
+          isDetailsActive={isDetailsActive}
           onTaskClose={handleTaskClose}
           deleteTask={deleteTask}
           onEditTask={editTask}

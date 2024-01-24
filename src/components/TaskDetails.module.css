@@ -10,9 +10,9 @@
 }
 
 .container {
-  overflow: auto;
+  overflow-y: auto;
   width: 500px;
-  min-height: 100vh;
+  height: 100%;
   background-color: var(--colour-tertiary);
   position: fixed;
   top: 0;
@@ -23,7 +23,6 @@
   text-align: left;
   transform: translateX(-500px);
   transition: transform 0.3s ease-in-out;
-
   z-index: 2;
 }
 .container.active {
@@ -46,18 +45,22 @@
     line-height: 1.5rem;
     text-transform: uppercase;
   }
-  .iconbox {
+  .closeform {
     position: absolute;
     width: 3rem;
     height: 3rem;
     display: flex;
     align-items: center;
-    /* height: 100%; */
-    top: 0;
-    right: 0;
-    padding: 1rem;
+    top: 0.3rem;
+    right: 0.3rem;
     cursor: pointer;
+    background-color: var(--colour-tertiary);
     z-index: 1;
+    & .icon {
+      width: 1.5rem;
+      height: 1.5rem;
+      color: var(--colour-primary);
+    }
   }
 }
 .main {
@@ -111,9 +114,10 @@
     display: flex;
     flex-direction: column;
     padding-left: 1rem;
-    p {
-      text-transform: capitalize;
+    gap: 0.5rem;
+    label {
       color: var(--colour-primary);
+      left: -0.5rem;
     }
   }
 }

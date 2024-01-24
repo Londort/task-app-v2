@@ -6,12 +6,12 @@ import styles from './TaskForm.module.css';
 import RoundBtn from '../UI/RoundBtn';
 
 const TaskForm = (props) => {
-  const { addTask, handleFormOpen, isActive } = props;
+  const { addTask, handleFormOpen, isFormActive } = props;
 
   const [task, setTask] = useState({
     title: '',
     description: '',
-    dueDate: 'no date',
+    dueDate: '',
     type: 'reminder',
     details: {},
   });
@@ -37,7 +37,7 @@ const TaskForm = (props) => {
     if (!task.title) return;
     addTask({ ...task, id: taskID });
 
-    handleFormOpen(!isActive);
+    handleFormOpen(!isFormActive);
     setTask({
       title: '',
       description: '',
@@ -49,7 +49,9 @@ const TaskForm = (props) => {
 
   return (
     <section
-      className={`${styles.container} ${isActive ? `${styles.active}` : ' '}`}
+      className={`${styles.container} ${
+        isFormActive ? `${styles.active}` : ' '
+      }`}
     >
       <FaBars
         className={styles.openFormBtn}
